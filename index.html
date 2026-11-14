@@ -129,6 +129,7 @@ function render(){
  $('tabs').replaceChildren();
  DATA.forEach((g,n)=>{const b=document.createElement('button');b.textContent=('0'+(n+1))+'  '+g.title;b.className=n===active?'active':'';b.setAttribute('aria-pressed',String(n===active));b.onclick=()=>{active=n;render();};$('tabs').append(b);});
  $('paper').replaceChildren();$('paper').setAttribute('data-group',String(active));
+ if(active===0){const h=document.createElement('h3');h.className='heading';h.textContent='누리과정의 성격';$('paper').append(h);}
  DATA[active].rows.forEach((r,i)=>{
   if(r.heading){const h=document.createElement(/^\d+\./.test(r.heading)?'h4':'h3');h.className='heading'+(/^\d+\./.test(r.heading)?' minor':'');if(active===1&&!/^\d+\./.test(r.heading))h.className+=' chapter-banner';h.textContent=r.heading;$('paper').append(h);return;}
   const key=keyFor(active,i);const old=state[key]||{};
